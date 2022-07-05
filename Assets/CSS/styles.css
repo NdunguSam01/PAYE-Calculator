@@ -1,0 +1,48 @@
+h1
+{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: bold;
+    text-transform: uppercase;
+}
+body
+{
+    background-color: rgba(200, 100, 65, 0.5);
+}
+#basic
+{
+    padding-left: 10px;
+    float:left; 
+    width: 45%;
+}
+
+/* To disable inputs 
+input[type="number"], input[type="radio"]
+{
+    pointer-events: none;
+} */
+
+#calculate
+{
+    text-align: center;
+}
+button
+{
+    margin-left:25%;
+}
+table, td, th 
+{
+    border: 1px solid black;
+}
+table 
+{
+    float:right;
+    width:55%;
+    padding-right: 10px;
+    visibility: hidden;
+}
+td 
+{
+    text-align: left;
+    width: 30%;
+}
