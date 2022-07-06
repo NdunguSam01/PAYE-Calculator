@@ -37,35 +37,35 @@
         
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <label><input type="radio" id="nssfyes" value="yes" name="nssfoption" required> YES</label>
+        <label><input type="radio" id="nssfyes" value="yes" name="nssfoption"> YES</label>
 
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <label><input type="radio" id="nssfno" value="no" name="nssfoption" required> NO</label>
+        <label><input type="radio" id="nssfno" value="no" name="nssfoption" > NO</label>
         <br><br>
 
         <label>NSSF RATES: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <label><input type="radio" id="new" value="new" name="rates"> NEW NSSF RATES (TIERED) </label>
+        <label><input type="radio" id="nsnew" value="nsnew" name="rates"> NEW NSSF RATES (TIERED) </label>
         <br><br>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
 
-        <label><input type="radio" id="old" value="old" name="rates"required> OLD NSSF RATES (KSHS 200)</label>
+        <label><input type="radio" id="nsold" value="nsold" name="rates"required> OLD NSSF RATES (KSHS 200)</label>
         <br><br>
         <label>DEDUCT NHIF: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <label><input type="radio" id="yes" value="yes" name="nhifoption" required> YES</label>
+        <label><input type="radio" id="nhyes" value="nhyes" name="nhifoption"> YES</label>
         
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <label><input type="radio" id="no" value="no" name="nhifoption"> NO</label>
+        <label><input type="radio" id="nhno" value="nhno" name="nhifoption"> NO</label>
         <br><br><br>
-        <button type="button" id="calculate" class="btn btn-success" onclick="calculate();">CALCULATE</button>
+        <button type="button" class="btn btn-success" onclick="calculate();">CALCULATE</button>
     </form>
 
     
@@ -101,7 +101,7 @@
             <td id="relief"></td>
         </tr>
         <tr>
-            <td>TAX ON NET RELIEF</td>
+            <td>TAX NET OFF RELIEF</td>
             <td id="taxonnet"></td>
         </tr>
         <tr>

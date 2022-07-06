@@ -1,14 +1,4 @@
-const period=document.getElementByName('period');
-const salary=document.getElementById('salary');
-const bonus=document.getElementById('bonus');
-const nschoice=document.getElementById('nssfoption');
-const nsrates=document.getElementById('rates');
-const nhchoice=document.getElementById('nhifoption');
-
 const nsold =()=> nscont=200;
-
-const afterPension=salary-nscont;
-const amount=afterPension+bonus;
 
 const monthly=(amount)=>
 {
@@ -35,7 +25,7 @@ const monthly=(amount)=>
             break;
         
             default:
-                text="Tax bracker not found!";
+                alert("Tax bracket not found!");
     }
     return tax;
 }
@@ -65,9 +55,10 @@ const annually=(amount)=>
             break;
         
         default:
-            text="Tax bracket not found!";
+            alert("Tax bracket not found!");
     }
 }
+
 
 const nhif=(salary)=>
 {
@@ -142,7 +133,7 @@ const nhif=(salary)=>
             break;
 
         default:
-            text ="Bracket not found!";
+            alert ("Bracket not found!");
 
     }
     return nhcont;
