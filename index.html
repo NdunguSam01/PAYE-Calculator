@@ -12,70 +12,66 @@
     </head>
 <body>
     <h1>PAYE CALCULATOR</h1>
+
     <form id="basic">
+        <h2>PAYE CALCULATOR</h2>
+        <br>
         <label>PAY PERIOD: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <input type="radio" id="month" value="month" name="period">
-        <label for="month">MONTH</label>
-        &nbsp;
-        <input type="radio" id="year" value="year" name="period"> 
-        <label for="year">YEAR</label>
+        <label><input type="radio" id="month" value="month" name="period"> MONTH</label>
+        <label><input type="radio" id="year" value="year" name="period"> YEAR</label>
         <br><br>
         <label for="salary">BASIC SALARY: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <input type="number" id="salary" name="salary" placeholder="Basic Salary in Kshs" required>
+        <input type="number" id="salary" name="salary" placeholder="Salary in Kshs" required>
         <br><br>
-        <label for="salary">BENEFITS
+        <label for="bonus">BENEFITS
             (BONUS,ALLOWANCE):</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="number" id="bonus" placeholder="Benefits in Kshs" required>
+        <input type="number" id="bonus" name="bonus" placeholder="Benefits in Kshs" required>
         <br><br>
         <label>DEDUCT NSSF: </label>
         
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <input type="radio" id="nssfyes" value="yes" name="nssfoption" required>
-        <label for="nssfyes">YES</label>
+        <label><input type="radio" id="nssfyes" value="yes" name="nssfoption" required> YES</label>
 
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <input type="radio" id="nssfno" value="no" name="nssfoption" required>
-        <label for="nssfno">NO</label>
+        <label><input type="radio" id="nssfno" value="no" name="nssfoption" required> NO</label>
         <br><br>
+
         <label>NSSF RATES: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <input type="radio" id="new" value="new" name="rates">
-        <label for="new">NEW NSSF RATES (TIERED) </label>
+        <label><input type="radio" id="new" value="new" name="rates"> NEW NSSF RATES (TIERED) </label>
         <br><br>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
 
-        <input type="radio" id="old" value="old" name="rates"required>
-        <label for="old">OLD NSSF RATES (KSHS 200)</label>
+        <label><input type="radio" id="old" value="old" name="rates"required> OLD NSSF RATES (KSHS 200)</label>
         <br><br>
         <label>DEDUCT NHIF: </label>
 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-        <input type="radio" id="yes" value="yes" name="nhifoption" required>
-        <label for="yes">YES</label>
+        <label><input type="radio" id="yes" value="yes" name="nhifoption" required> YES</label>
         
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <input type="radio" id="no" value="no" name="nhifoption">
-        <label for="no">NO</label>
+        <label><input type="radio" id="no" value="no" name="nhifoption"> NO</label>
         <br><br><br>
-
         <button type="button" id="calculate" class="btn btn-success" onclick="calculate();">CALCULATE</button>
     </form>
 
     
     <table>        
+        <h2>TAX CALCULATIONS</h2>
+        <br>
         <tr>
             <td>INCOME BEFORE PENSION DEDUCTION</td>
             <td id="initial"></td>
