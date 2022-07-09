@@ -3,16 +3,32 @@ let year = document.getElementById('year');
 let salary=document.getElementById('salary');
 let bonus=document.getElementById('bonus');
 
-let nssfDeduction=document.getElementById("nssfDeduct");
+//Declaring the output fields
+let initial=document.getElementById('initial');
+let nssfDeduct=document.getElementById("nssfDeduct");
+let afterDeduct=document.getElementById('afterDeduct'); 
+let benefits = document.getElementById('benefits');
+let taxable=document.getElementById('taxable');
+let tax=document.getElementById('tax');
+let relief=document.getElementById('relief');
+let taxonnet=document.getElementById('taxonnet');
+let paye=document.getElementById('paye');
+let charged=document.getElementById('charged');
+let nhifcontrib=document.getElementById('nhifcontrib');
+let netpay=document.getElementById('netpay');
+
+
 const calculate=()=>
 {
-    document.getElementById('initial').textContent='Kshs ' +parseInt(salary.value).toFixed(2);
-    document.getElementById('benefits').textContent='Kshs ' +parseInt(bonus.value).toFixed(2);
+    initial.textContent=parseInt(salary.value).toFixed(2);
+    benefits.textContent=parseInt(bonus.value).toFixed(2);
     nhif()
     nssf()
-    relief()
+    reliefAmount()
     incomeAfterDeductions()
-    tax()
+    payeCalc()
+    netoffrelief()
+    netPay()
 }
 
 //NSSF calculations
@@ -29,22 +45,22 @@ const nssf=()=>
         {
             if(salary.value>18000)
             {
-                document.getElementById('nssfDeduct').textContent='Kshs 2160';
+                nssfDeduct.textContent='2160.00';
             }
             else
             {
                 let nssf=parseInt(salary.value *0.12);
-                document.getElementById('nssfDeduct').textContent='Kshs ' + nssf.toFixed(2);
+                nssfDeduct.textContent=nssf.toFixed(2);
             }
         }
         if(rateOld.checked)
         {
-            document.getElementById('nssfDeduct').textContent='Kshs 200';
+            nssfDeduct.textContent='200';
         }
     }
     else if(nsno.checked)
     {
-        document.getElementById('nssfDeduct').textContent='Kshs 0.00';
+        nssfDeduct.textContent='0.00';
     }
 }
 
@@ -125,44 +141,46 @@ const nhif=()=>
         }
         else 
         {
-            document.getElementById("nhifcontrib").textContent = 'Kshs 0.00';
+            nhifcontrib.textContent ='0.00';
         }
    
-        document.getElementById("nhifcontrib").textContent = 'Kshs ' +nhcont;
+        nhifcontrib.textContent =nhcont;
     }
     else if (nhno.checked)
     {
-        document.getElementById("nhifcontrib").textContent = 'Kshs 0.00';
+        nhifcontrib.textContent ='0.00';
     } 
 }
 
 //Relief Amount
-const relief=()=>
+const reliefAmount=()=>
 {
     if (month.checked)
     {
-        document.getElementById("relief").textContent = 'Kshs 2400';
+        relief.textContent = 2400;
     }
     else if (year.checked)
     {
-        document.getElementById("relief").textContent = 'Kshs 28800';
+        relief.textContent = 28800;
     }
 }
 
 //Income After Pension Deductions
 const incomeAfterDeductions =()=>
 {
-    let netamount =parseInt(salary.value-nssfDeduction.textContent);
-    document.getElementById("afterDeduct").textContent = 'Kshs ' +netamount.toFixed(2);
-    document.getElementById("taxable").textContent = 'Kshs ' +netamount.toFixed(2);
-    document.getElementById("charged").textContent = 'Kshs ' +netamount.toFixed(2);
+    let netamount =parseInt(salary.value-nssfDeduct.textContent);
+    afterDeduct.textContent =netamount;
 }
 
 //PAYE calculations
-const tax=()=>
+const payeCalc=()=>
 {
-    amount=document.getElementById("taxable").value;
-    if(monthly.checked)
+    first=parseFloat(afterDeduct.textContent);
+    second=parseFloat(benefits.textContent);
+    amount= first+second;
+    taxable.textContent=amount;
+    charged.textContent=amount;
+    if(month.checked)
     {
         if(amount>=0 && amount<=12298)
         {
@@ -186,9 +204,9 @@ const tax=()=>
         }
         else
         {
-            document.getElementById("tax").textContent = 'Tax bracket not found!';
+            tax.textContent = 'Tax bracket not found!';
         }
-    document.getElementById("tax").textContent = 'Kshs ' +taxAmnt;
+    tax.textContent =taxAmnt.toFixed(2 );
     }
     else if(year.checked)
     {
@@ -214,71 +232,28 @@ const tax=()=>
         }
         else
         {
-            document.getElementById("tax").textContent = 'Tax bracket not found!';
+            tax.textContent = 'Tax bracket not found!';
         }
     }
-        document.getElementById("tax").textContent = 'Kshs ' +taxAmnt;
+        tax.textContent =taxAmnt.toFixed(2);
 }
 
-const monthly=(amount)=>
+//Tax net off relief
+const netoffrelief=()=>
 {
-    switch(amount)
-    {
-        case amount>=0 && amount<=12298:
-            tax=amount*0.1;
-            break;
-        
-        case amount>=12299 && amount<=23885:
-            tax=amount*0.15;
-            break;
-        
-        case amount>=23886 && amount<=35472:
-            tax=amount*0.2;
-            break;
-        
-        case amount>=35473 && amount<=47059:
-            tax=amount*0.25;
-            break;
-            
-        case amount>47059:
-            tax=amount*0.3;
-            break;
-        
-            default:
-                alert("Tax bracket not found!");
-    }
-    return tax;
+    PAYE=parseFloat(tax.textContent);
+    taxRelief=parseFloat(relief.textContent);
+    netRelief=PAYE-taxRelief;
+    taxonnet.textContent=netRelief.toFixed(2);
+    paye.textContent=netRelief.toFixed(2);
 }
 
-const annually=(amount)=>
+//Net Pay
+const netPay=()=>
 {
-    switch(amount)
-    {
-        case amount>=0 && amount<=147580:
-            tax=amount*0.1;
-            break;
-        
-        case amount>=147581 && amount<=286623:
-            tax=amount*0.15;
-            break;
-        
-        case amount>=286624 && amount<=425666:
-            tax=amount*0.2;
-            break;
-        
-        case amount>=425667 && amount<=564709:
-            tax=amount*0.25;
-            break;
-        
-        case amount>564709:
-            tax=amount*0.3;
-            break;
-        
-        default:
-            alert("Tax bracket not found!");
-    }
+    taxableIncome=taxable.textContent;
+    payeValue=paye.textContent;
+    value1=taxableIncome-payeValue;
+    value2=value1-nhifcontrib.textContent;
+    netpay.textContent=value2.toFixed(2);
 }
-
-
-
-
