@@ -1,7 +1,14 @@
+//Declaring the input fields
 let month = document.getElementById('month');
 let year = document.getElementById('year');
 let salary=document.getElementById('salary');
 let bonus=document.getElementById('bonus');
+let nsyes=document.getElementById('nssfyes');
+let nsno=document.getElementById('nssfno');
+let rateNew=document.getElementById('nsnew');
+let rateOld=document.getElementById('nsold');
+let nhyes=document.getElementById('nhyes');
+let nhno=document.getElementById('nhno');
 
 //Declaring the output fields
 let initial=document.getElementById('initial');
@@ -16,7 +23,6 @@ let paye=document.getElementById('paye');
 let charged=document.getElementById('charged');
 let nhifcontrib=document.getElementById('nhifcontrib');
 let netpay=document.getElementById('netpay');
-
 
 const calculate=()=>
 {
@@ -34,11 +40,6 @@ const calculate=()=>
 //NSSF calculations
 const nssf=()=>
 {
-    let nsyes=document.getElementById('nssfyes');
-    let nsno=document.getElementById('nssfno');
-    let rateNew=document.getElementById('nsnew');
-    let rateOld=document.getElementById('nsold');
-
     if (nsyes.checked)
     {
         if(rateNew.checked)
@@ -55,7 +56,7 @@ const nssf=()=>
         }
         if(rateOld.checked)
         {
-            nssfDeduct.textContent='200';
+            nssfDeduct.textContent='200.00';
         }
     }
     else if(nsno.checked)
@@ -67,8 +68,7 @@ const nssf=()=>
 //NHIF calculations
 const nhif=()=>
 {
-    let nhyes=document.getElementById('nhyes');
-    let nhno=document.getElementById('nhno');
+    
 
     if(nhyes.checked)
     {
@@ -144,7 +144,7 @@ const nhif=()=>
             nhifcontrib.textContent ='0.00';
         }
    
-        nhifcontrib.textContent =nhcont;
+        nhifcontrib.textContent =nhcont.toFixed(2);
     }
     else if (nhno.checked)
     {
@@ -157,11 +157,11 @@ const reliefAmount=()=>
 {
     if (month.checked)
     {
-        relief.textContent = 2400;
+        relief.textContent = '2400.00';
     }
     else if (year.checked)
     {
-        relief.textContent = 28800;
+        relief.textContent = '28800.00';
     }
 }
 
@@ -169,7 +169,7 @@ const reliefAmount=()=>
 const incomeAfterDeductions =()=>
 {
     let netamount =parseInt(salary.value-nssfDeduct.textContent);
-    afterDeduct.textContent =netamount;
+    afterDeduct.textContent =netamount.toFixed(2);
 }
 
 //PAYE calculations
@@ -178,8 +178,8 @@ const payeCalc=()=>
     first=parseFloat(afterDeduct.textContent);
     second=parseFloat(benefits.textContent);
     amount= first+second;
-    taxable.textContent=amount;
-    charged.textContent=amount;
+    taxable.textContent=amount.toFixed(2);
+    charged.textContent=amount.toFixed(2);
     if(month.checked)
     {
         if(amount>=0 && amount<=12298)
